@@ -1,113 +1,210 @@
-import Image from "next/image";
+import Image from 'next/image';
+import Link from 'next/link';
 
-export default function Home() {
+const HomePage = () => {
+  const posts = [
+    {
+      image: '/images/post1.jpg',
+      title: 'Post Title 1',
+      category: 'Category 1',
+      link: '/posts/post1',
+    },
+    {
+      image: '/images/post2.jpg',
+      title: 'Post Title 2',
+      category: 'Category 2',
+      link: '/posts/post2',
+    },
+    {
+      image: '/images/post3.jpg',
+      title: 'Post Title 3',
+      category: 'Category 3',
+      link: '/posts/post3',
+    },
+  ];
+  const images = [
+    "/images/Home.jpg",
+    "/images/Home.jpg",
+    "/images/IMG1.jpg",
+   "/images/img.jpg",
+    "/images/Home.jpg",
+  ];
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
+    <div>
+      {/* Banner Section */}
+      <div
+        className="home-banner text-center py-20 bg-cover bg-center mb-20"
+        style={{ backgroundImage: 'url("/images/Home.jpg")' }}
+      >
+        <h1 className="text-5xl font-bold text-white">
+          JOURNEY, IMAGINE, <span className="text-green-400">DISCOVER</span>
+        </h1>
+        <p className="text-xl text-white mt-6">Wander, Experience, Enjoy</p>
+        <Link
+          href="/destinations"
+          className="inline-block mt-8 px-8 py-3 border-2 border-white text-white bg-transparent hover:bg-green-800 hover:border-green-800 transition-all duration-300 transform hover:scale-105"
+        >
+          Start Exploring
+        </Link>
+      </div>
+
+      {/* Content Section Below Banner */}
+      <div className="content-section px-6 md:px-12 py-16 text-center mb-20">
+        <h2 className="text-4xl font-semibold mb-10">Discover Your Next Adventure</h2>
+        <p className="text-lg leading-relaxed mb-12 max-w-3xl mx-auto">
+          Our travel blog is your gateway to discovering the world's most breathtaking destinations.
+          Whether you're planning a weekend getaway or a month-long expedition, we've got you covered with
+          expert tips, travel guides, and insider advice. Start exploring and let your wanderlust take flight!
         </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
+
+        {/* Featured Destinations */}
+        <div className="featured-destinations py-12 mb-20">
+          <h3 className="text-3xl font-semibold mb-8">Featured Destinations</h3>
+          <div className="destination-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Destination Items */}
+            {[
+              { src: '/images/destination1.jpg', title: "Exploring Bali’s Hidden Waterfalls", desc: "Discover the hidden gems of Bali’s waterfalls." },
+              { src: '/images/destination2.jpg', title: "Top 10 Destinations in Japan", desc: "Explore the top destinations in Japan for a cultural experience." },
+              { src: '/images/destination3.jpg', title: "A Guide to the Best Hikes in Nepal", desc: "Find the best hikes in Nepal for your next adventure." },
+              { src: '/images/destination4.jpg', title: "Discover the Beauty of Iceland", desc: "Experience the stunning landscapes and natural wonders of Iceland." },
+            ].map((destination, index) => (
+              <div key={index} className="destination-item text-left transform transition-transform duration-300 hover:scale-105">
+                <div className="relative h-60 mb-4 overflow-hidden rounded-lg">
+                  <Image
+                    src={destination.src}
+                    alt={destination.title}
+                    layout="fill"
+                    objectFit="cover"
+                    className="transition-transform duration-300 hover:scale-110"
+                  />
+                </div>
+                <h4 className="text-xl font-bold">{destination.title}</h4>
+                <p className="text-gray-700">{destination.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* About Section */}
+        <h2 className="text-4xl font-bold mb-12 text-center lg:text-left">Thanks For Looking!</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 items-start">
+          <div className="order-2 lg:order-1">
+            <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[600px] xl:h-[700px]">
+              <Image
+                src="/images/img.jpg"
+                alt="Traveler in front of a Japanese castle"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+          <div className="order-1 lg:order-2">
+            <p className="mb-4">I'm David Leiter, the guy behind this website...</p>
+            <p className="mb-4">I started this travel blog in 2019...</p>
+            <p className="mb-4">Together, we've done some <span className="text-orange-500">bucket list hikes</span>...</p>
+            <p className="mb-4">I've worked with and been featured by BBC Travel, NBC News, Time...</p>
+            <p className="mb-6">I haven't been everywhere, but it's on my list...</p>
+            <button className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition duration-300">READ MORE →</button>
+          </div>
+        </div>
+
+        {/* Recent Posts and Aside Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          {/* Recent Posts */}
+          <div className="md:col-span-2">
+            <h2 className="text-3xl font-bold mb-8">Recent Posts</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {posts.map((post, index) => (
+                <div key={index} className="border rounded-lg overflow-hidden shadow-lg mb-6">
+                  <Image src={post.image} alt={post.title} width={500} height={300} />
+                  <div className="p-4">
+                    <p className="text-orange-500 text-sm mb-2">{post.category}</p>
+                    <h3 className="text-xl font-bold mb-4">{post.title}</h3>
+                    <Link href={post.link} className="bg-orange-500 text-white px-4 py-2 rounded-full inline-block">
+                      Read More
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Aside Section */}
+          <aside className="bg-white shadow-lg p-6 rounded-lg text-center mb-20">
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+              src="/images/Home.jpg"
+              alt="David and Intan"
+              width={150}
+              height={150}
+              className="rounded-full mx-auto"
             />
-          </a>
+            <h3 className="text-xl font-bold mt-4">Hey there! I'm David Leiter</h3>
+            <p className="mt-4">An American who's been traveling the world full-time for 8 years now.</p>
+            <p className="mt-4">My wife Intan and I are based in Bali...</p>
+
+            {/* Social Links */}
+            <div className="flex space-x-4 justify-center mt-6">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <img src="/icons/facebook.svg" alt="Facebook" className="w-6 h-6" />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <img src="/icons/instagram.svg" alt="Instagram" className="w-6 h-6" />
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                <img src="/icons/youtube.svg" alt="YouTube" className="w-6 h-6" />
+              </a>
+            </div>
+          </aside>
+        </div>
+
+        <div className="relative w-screen h-[400px] bg-cover bg-center" style={{ backgroundImage: "url('/images/Home.jpg')" }}>
+  <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center">
+    <h1 className="text-white text-4xl font-bold">Get In Touch</h1>
+    <p className="text-white text-lg mt-4">
+      Feel free to <a href="#contact" className="text-orange-500 underline">contact me</a> if you have travel questions, comments, or suggestions!
+    </p>
+    <p className="text-white text-lg mt-2">I'll try to get back to you!</p>
+    <div className="mt-6">
+      <img src="/path-to-paper-plane-icon.svg" alt="Paper Plane" className="w-8 h-8" />
+    </div>
+  </div>
+</div>
+
+
+<div className="bg-white py-6">
+  <h2 className="text-center font-bold text-lg mb-4">Instagram</h2>
+  <div className="flex flex-wrap gap-4 justify-center px-4">
+    {images.map((img, idx) => (
+      <div key={idx} className="relative w-72 h-72 flex-shrink-0 overflow-hidden">
+        <div className="relative w-full h-full group">
+          {/* Image with hover effect */}
+          <div
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-300 ease-in-out group-hover:scale-110"
+            style={{ backgroundImage: `url(${img})` }}
+          />
+          {/* Hover effect with opacity and border */}
+          <div className="absolute inset-0 border-2 border-black opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
       </div>
+    ))}
+  </div>
+</div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+
+
+        {/* Call-to-Action */}
+        <div className="call-to-action mt-20 text-center bg-green-100 p-12 rounded-lg">
+          <h3 className="text-3xl font-semibold mb-4">Ready to Start Your Adventure?</h3>
+          <p className="text-xl mb-8">Sign up for our newsletter to receive the latest updates, travel tips, and exclusive offers!</p>
+          <button className="cta-button bg-green-600 text-white py-3 px-8 rounded-lg text-lg hover:bg-green-700 transition duration-300">
+            Subscribe Now
+          </button>
+        </div>
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
-}
+};
+
+export default HomePage;
