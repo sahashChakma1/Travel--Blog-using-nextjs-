@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -11,24 +11,28 @@ export default function Header({ fontClassName }) {
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const pathname = usePathname();
 
-  const isActive = (path) => pathname === path;
+  const isActive = useCallback((path) => pathname === path, [pathname]);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > lastScrollTop && scrollTop > 40) {
-        setIsNavShrunk(true);
-      } else {
-        setIsNavShrunk(false);
-      }
+      setIsNavShrunk(scrollTop > lastScrollTop && scrollTop > 40);
       setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollTop]);
+
+  const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/destinations', label: 'Destinations' },
+    { href: '/contact', label: 'Contact' },
+    { href: '/gallery', label: 'Gallery' },
+  ];
 
   return (
     <header
@@ -59,11 +63,12 @@ export default function Header({ fontClassName }) {
             aria-controls="nav-menu"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
-              )}
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth="2" 
+                d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
+              />
             </svg>
           </button>
         </div>
@@ -71,12 +76,7 @@ export default function Header({ fontClassName }) {
         {/* Navigation Links for Larger Screens */}
         <nav id="nav-menu" className="hidden md:block md:static md:flex md:items-center md:space-x-5 lg:space-x-7">
           <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-5 lg:space-x-7 text-sm font-medium">
-            {[
-              { href: '/', label: 'Home' },
-              { href: '/about', label: 'About' },
-              { href: '/destinations', label: 'Destinations' },
-              { href: '/contact', label: 'Contact' },
-            ].map((link) => (
+            {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
@@ -122,12 +122,7 @@ export default function Header({ fontClassName }) {
           </button>
 
           <ul className="flex flex-col space-y-3 text-base font-medium mt-7">
-            {[
-              { href: '/', label: 'Home' },
-              { href: '/about', label: 'About' },
-              { href: '/destinations', label: 'Destinations' },
-              { href: '/contact', label: 'Contact' },
-            ].map((link) => (
+            {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
