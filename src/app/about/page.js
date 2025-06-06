@@ -96,8 +96,9 @@ const About = () => {
       {/* Introduction */}
       <div className="text-center mb-16 px-6 py-12">
         <p className="text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
-          Welcome to our travel blog! We're passionate travelers who love to explore the beauty of the world and share our experiences with you. Our journey began with a simple love for adventure and has grown into a mission to inspire others to explore and appreciate the diverse cultures and landscapes around the globe.
+           Welcome to our travel blog! We&#39;re passionate travelers who love to explore the beauty of the world and share our experiences with you. Our journey began with a simple love for adventure and has grown into a mission to inspire others to explore and appreciate the diverse cultures and landscapes around the globe.
         </p>
+
       </div>
 
       {/* Personal Background */}
@@ -114,7 +115,7 @@ const About = () => {
         <div className="w-full md:w-2/3 md:pl-6">
           <h2 className="text-3xl font-bold mb-4">Meet the Team</h2>
           <p className="text-lg leading-relaxed mb-6">
-            We are [Your Name] and [Partner's Name], two avid explorers with a deep love for travel. With backgrounds in [Your Background], we bring a unique perspective to our travel experiences. Our goal is to share our adventures, tips, and recommendations to help you make the most of your travels.
+             We are [Your Name] and [Partner&#39;s Name], two avid explorers with a deep love for travel. With backgrounds in [Your Background], we bring a unique perspective to our travel experiences. Our goal is to share our adventures, tips, and recommendations to help you make the most of your travels.
           </p>
         </div>
       </div>
@@ -154,10 +155,12 @@ const About = () => {
       {/* Contact Information */}
       <div className="text-center py-12 px-6 bg-off-white">
         <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
-        <p className="text-lg mb-4">We'd love to hear from you! Whether you have questions, feedback, or just want to say hello, feel free to reach out.</p>
-        <a href="/contact" className="bg-green-950 text-white font-semibold py-2 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300">
-          Contact Us
-        </a>
+          <p className="text-lg mb-4">
+            We&#39;d love to hear from you! Whether you have questions, feedback, or just want to say hello, feel free to reach out.
+          </p>
+          <a href="/contact" className="bg-green-950 text-white font-semibold py-2 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300">
+            Contact Us
+          </a>
       </div>
     </section>
   );
