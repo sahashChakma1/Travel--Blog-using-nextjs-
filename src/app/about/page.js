@@ -3,6 +3,8 @@ import React, { useRef, useEffect } from 'react';
 import Slider from 'react-slick';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import GLightbox from 'glightbox';
+import Image from 'next/image';
+
 import 'glightbox/dist/css/glightbox.min.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -41,7 +43,6 @@ const About = () => {
     sliderRef.current.slickNext();
   };
 
-  // Initialize Glightbox for the gallery
   useEffect(() => {
     const lightbox = GLightbox({
       selector: '.glightbox-gallery',
@@ -59,17 +60,23 @@ const About = () => {
         <Slider ref={sliderRef} {...sliderSettings}>
           {sliderImages.map((image, index) => (
             <div key={index} className="w-full h-[500px] relative">
-              <img
-                src={image.src}
-                alt={image.title}
-                className="w-full h-full object-cover"
-              />
+              <div className="relative w-full h-full">
+                <Image
+                  src={image.src}
+                  alt={image.title}
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                  priority={index === 0}
+                />
+              </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-center justify-center">
                 <h1 className="text-3xl md:text-5xl font-extrabold text-white drop-shadow-lg">{image.title}</h1>
               </div>
             </div>
           ))}
         </Slider>
+
         <button
           onClick={goToPrevious}
           className="absolute top-1/2 left-4 -translate-y-1/2 p-2 bg-black/50 text-white rounded-full hover:bg-black/75 transition-colors z-10"
@@ -89,7 +96,7 @@ const About = () => {
       {/* Introduction */}
       <div className="text-center mb-16 px-6 py-12">
         <p className="text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
-          Welcome to our travel blog! We are passionate travelers who love to explore the beauty of the world and share our experiences with you. Our journey began with a simple love for adventure and has grown into a mission to inspire others to explore and appreciate the diverse cultures and landscapes around the globe.
+          {`Welcome to our travel blog! We're passionate travelers who love to explore the beauty of the world and share our experiences with you. Our journey began with a simple love for adventure and has grown into a mission to inspire others to explore and appreciate the diverse cultures and landscapes around the globe.`}
         </p>
       </div>
 

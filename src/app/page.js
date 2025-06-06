@@ -26,7 +26,7 @@ const HomePage = () => {
     "/images/Home.jpg",
     "/images/Home.jpg",
     "/images/IMG1.jpg",
-   "/images/img.jpg",
+    "/images/img.jpg",
     "/images/Home.jpg",
   ];
 
@@ -53,8 +53,8 @@ const HomePage = () => {
       <div className="content-section px-6 md:px-12 py-16 text-center mb-20">
         <h2 className="text-4xl font-semibold mb-10">Discover Your Next Adventure</h2>
         <p className="text-lg leading-relaxed mb-12 max-w-3xl mx-auto">
-          Our travel blog is your gateway to discovering the world's most breathtaking destinations.
-          Whether you're planning a weekend getaway or a month-long expedition, we've got you covered with
+          Our travel blog is your gateway to discovering the world&apos;s most breathtaking destinations.
+          Whether you&apos;re planning a weekend getaway or a month-long expedition, we&apos;ve got you covered with
           expert tips, travel guides, and insider advice. Start exploring and let your wanderlust take flight!
         </p>
 
@@ -64,7 +64,7 @@ const HomePage = () => {
           <div className="destination-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Destination Items */}
             {[
-              { src: '/images/destination1.jpg', title: "Exploring Bali’s Hidden Waterfalls", desc: "Discover the hidden gems of Bali’s waterfalls." },
+              { src: '/images/destination1.jpg', title: "Exploring Bali&apos;s Hidden Waterfalls", desc: "Discover the hidden gems of Bali&apos;s waterfalls." },
               { src: '/images/destination2.jpg', title: "Top 10 Destinations in Japan", desc: "Explore the top destinations in Japan for a cultural experience." },
               { src: '/images/destination3.jpg', title: "A Guide to the Best Hikes in Nepal", desc: "Find the best hikes in Nepal for your next adventure." },
               { src: '/images/destination4.jpg', title: "Discover the Beauty of Iceland", desc: "Experience the stunning landscapes and natural wonders of Iceland." },
@@ -101,12 +101,16 @@ const HomePage = () => {
             </div>
           </div>
           <div className="order-1 lg:order-2">
-            <p className="mb-4">I'm David Leiter, the guy behind this website...</p>
+            <p className="mb-4">I&apos;m David Leiter, the guy behind this website...</p>
             <p className="mb-4">I started this travel blog in 2019...</p>
-            <p className="mb-4">Together, we've done some <span className="text-orange-500">bucket list hikes</span>...</p>
-            <p className="mb-4">I've worked with and been featured by BBC Travel, NBC News, Time...</p>
-            <p className="mb-6">I haven't been everywhere, but it's on my list...</p>
-            <button className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition duration-300">READ MORE →</button>
+            <p className="mb-4">Together, we&apos;ve done some <span className="text-orange-500">bucket list hikes</span>...</p>
+            <p className="mb-4">I&apos;ve worked with and been featured by BBC Travel, NBC News, Time...</p>
+            <p className="mb-6">I haven&apos;t been everywhere, but it&apos;s on my list...</p>
+            <Link href="/about">
+              <button className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition duration-300">
+                READ MORE →
+              </button>
+            </Link>
           </div>
         </div>
 
@@ -140,59 +144,56 @@ const HomePage = () => {
               height={150}
               className="rounded-full mx-auto"
             />
-            <h3 className="text-xl font-bold mt-4">Hey there! I'm David Leiter</h3>
-            <p className="mt-4">An American who's been traveling the world full-time for 8 years now.</p>
+            <h3 className="text-xl font-bold mt-4">Hey there! I&apos;m David Leiter</h3>
+            <p className="mt-4">An American who&apos;s been traveling the world full-time for 8 years now.</p>
             <p className="mt-4">My wife Intan and I are based in Bali...</p>
 
             {/* Social Links */}
             <div className="flex space-x-4 justify-center mt-6">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                <img src="/icons/facebook.svg" alt="Facebook" className="w-6 h-6" />
+                <Image src="/icons/facebook.svg" alt="Facebook" width={24} height={24} />
               </a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <img src="/icons/instagram.svg" alt="Instagram" className="w-6 h-6" />
+                <Image src="/icons/instagram.svg" alt="Instagram" width={24} height={24} />
               </a>
               <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                <img src="/icons/youtube.svg" alt="YouTube" className="w-6 h-6" />
+                <Image src="/icons/youtube.svg" alt="YouTube" width={24} height={24} />
               </a>
             </div>
           </aside>
         </div>
 
         <div className="relative w-screen h-[400px] bg-cover bg-center" style={{ backgroundImage: "url('/images/Home.jpg')" }}>
-  <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center">
-    <h1 className="text-white text-4xl font-bold">Get In Touch</h1>
-    <p className="text-white text-lg mt-4">
-      Feel free to <a href="#contact" className="text-orange-500 underline">contact me</a> if you have travel questions, comments, or suggestions!
-    </p>
-    <p className="text-white text-lg mt-2">I'll try to get back to you!</p>
-    <div className="mt-6">
-      <img src="/path-to-paper-plane-icon.svg" alt="Paper Plane" className="w-8 h-8" />
-    </div>
-  </div>
-</div>
-
-
-<div className="bg-white py-6">
-  <h2 className="text-center font-bold text-lg mb-4">Instagram</h2>
-  <div className="flex flex-wrap gap-4 justify-center px-4">
-    {images.map((img, idx) => (
-      <div key={idx} className="relative w-72 h-72 flex-shrink-0 overflow-hidden">
-        <div className="relative w-full h-full group">
-          {/* Image with hover effect */}
-          <div
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-300 ease-in-out group-hover:scale-110"
-            style={{ backgroundImage: `url(${img})` }}
-          />
-          {/* Hover effect with opacity and border */}
-          <div className="absolute inset-0 border-2 border-black opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center">
+            <h1 className="text-white text-4xl font-bold">Get In Touch</h1>
+            <h1 className="text-white text-lg mt-4">
+              Feel free to <a href="/contact" className="text-orange-500 underline">contact me</a> if you have travel questions, comments, or suggestions!
+            </h1>
+            <h1 className="text-white text-lg mt-2">I&apos;ll try to get back to you!</h1>
+            <div className="mt-6">
+              <img src="/path-to-paper-plane-icon.svg" alt="Paper Plane" className="w-8 h-8" />
+            </div>
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
-</div>
 
-
+        <div className="bg-white py-6">
+          <h2 className="text-center font-bold text-lg mb-4">Instagram</h2>
+          <div className="flex flex-wrap gap-4 justify-center px-4">
+            {images.map((img, idx) => (
+              <div key={idx} className="relative w-72 h-72 flex-shrink-0 overflow-hidden">
+                <div className="relative w-full h-full group">
+                  {/* Image with hover effect */}
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-300 ease-in-out group-hover:scale-110"
+                    style={{ backgroundImage: `url(${img})` }}
+                  />
+                  {/* Hover effect with opacity and border */}
+                  <div className="absolute inset-0 border-2 border-black opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Call-to-Action */}
         <div className="call-to-action mt-20 text-center bg-green-100 p-12 rounded-lg">

@@ -1,54 +1,122 @@
-import React from 'react';
-import Image from 'next/image';
+"use client";
+import React, { useRef, useEffect } from 'react';
+import Slider from 'react-slick';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import GLightbox from 'glightbox';
+import 'glightbox/dist/css/glightbox.min.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const Gallery = () => {
-  const images = [
-    { src: '/images/Home.jpg', alt: 'Mayan pyramid' },
-    { src: '/images/img.jpg', alt: 'Volcanic landscape' },
-    { src: '/images/IMG1.jpg', alt: 'Mountain temple' },
-    { src: '/images/image4.jpg', alt: 'Desert landscape' },
-    { src: '/images/image5.jpg', alt: 'Machu Picchu' },
-    { src: '/images/image6.jpg', alt: 'Another view of Machu Picchu' },
-    { src: '/images/image7.jpg', alt: 'Flower field' },
-    { src: '/images/image8.jpg', alt: 'Exotic bird' },
+const About = () => {
+  const sliderRef = useRef(null);
+
+  const sliderImages = [
+    { src: "/images/Home.jpg", title: 'My Gallery' },
+    { src: "/images/img.jpg", title: 'Image 2' },
+    { src: "/images/IMG1.jpg", title: 'Image 3' },
   ];
 
-  return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <div className="relative h-96">
-        <Image
-          src="/images/hero-image.jpg"  // Ensure the image exists at this path
-          alt="Gallery Hero"
-          fill
-          style={{ objectFit: 'cover' }}
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="text-center text-white">
-            <h1 className="text-5xl font-bold">GALLERY</h1>
-            <p className="text-lg mt-2">Some pictures from our travels</p>
-          </div>
-        </div>
-      </div>
+  const galleryImages = [
+    { src: "/images/Home.jpg", title: 'About Us' },
+    { src: "/images/img.jpg", title: 'Image 2' },
+    { src: "/images/IMG1.jpg", title: 'Image 3' },
+    { src: "/images/IMG2.jpg", title: 'Image 4' },
+    { src: "/images/IMG3.jpg", title: 'Image 5' },
+  ];
 
-      {/* Image Grid */}
-      <div className="container mx-auto py-10 px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          {images.map((img, index) => (
-            <div key={index} className="relative w-full h-64">
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                style={{ objectFit: 'cover' }}
-                className="rounded-lg"
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+  };
+
+  const goToPrevious = () => {
+    sliderRef.current.slickPrev();
+  };
+
+  const goToNext = () => {
+    sliderRef.current.slickNext();
+  };
+
+  // Initialize GLightbox for the gallery
+  useEffect(() => {
+    const lightbox = GLightbox({
+      selector: '.glightbox-gallery',
+    });
+
+    return () => {
+      lightbox.destroy();
+    };
+  }, []);
+
+  return (
+    <section className="bg-off-white text-gray-900">
+      {/* Hero Section */}
+      <div className="relative w-full h-[500px] overflow-hidden">
+        <Slider ref={sliderRef} {...sliderSettings}>
+          {sliderImages.map((image, index) => (
+            <div key={index} className="w-full h-[500px] relative">
+              <img
+                src={image.src}
+                alt={image.title}
+                className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-center justify-center">
+                <h1 className="text-3xl md:text-5xl font-extrabold text-white drop-shadow-lg">{image.title}</h1>
+              </div>
+            </div>
+          ))}
+        </Slider>
+        <button
+          onClick={goToPrevious}
+          className="absolute top-1/2 left-4 -translate-y-1/2 p-2 bg-black/50 text-white rounded-full hover:bg-black/75 transition-colors z-10"
+          aria-label="Previous image"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <button
+          onClick={goToNext}
+          className="absolute top-1/2 right-4 -translate-y-1/2 p-2 bg-black/50 text-white rounded-full hover:bg-black/75 transition-colors z-10"
+          aria-label="Next image"
+        >
+          <ChevronRight size={24} />
+        </button>
+      </div>
+    
+      {/* Gallery Section */}
+      <div className="py-12 px-6">
+        <h2 className="text-3xl font-bold text-center mb-8">My Gallery</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {galleryImages.map((image, index) => (
+            <div key={index} className="relative group">
+              <a href={image.src} className="glightbox-gallery" data-glightbox={`title: ${image.title}`}>
+                <img
+                  src={image.src}
+                  alt={image.title}
+                  className="w-full h-64 object-cover rounded-lg shadow-lg"
+                />
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity rounded-lg"></div>
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-white text-lg font-bold">
+                  {image.title}
+                </div>
+              </a>
             </div>
           ))}
         </div>
       </div>
-    </div>
+
+     
+
+      {/* Contact Information */}
+      <div className="text-center py-12 px-6 bg-off-white">
+        <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
+        
+      </div>
+    </section>
   );
 };
 
-export default Gallery;
+export default About;
