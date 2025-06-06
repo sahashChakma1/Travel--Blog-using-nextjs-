@@ -2,7 +2,6 @@
 import React, { useRef, useEffect } from 'react';
 import Slider from 'react-slick';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import GLightbox from 'glightbox';
 import Image from 'next/image';
 
 import 'glightbox/dist/css/glightbox.min.css';
@@ -43,15 +42,20 @@ const About = () => {
     sliderRef.current.slickNext();
   };
 
-  useEffect(() => {
-    const lightbox = GLightbox({
+ useEffect(() => {
+  let lightbox;
+
+  import('glightbox').then((module) => {
+    lightbox = module.default({
       selector: '.glightbox-gallery',
     });
+  });
 
-    return () => {
-      lightbox.destroy();
-    };
-  }, []);
+  return () => {
+    if (lightbox) lightbox.destroy();
+  };
+}, []);
+
 
   return (
     <section className="bg-off-white text-gray-900">
