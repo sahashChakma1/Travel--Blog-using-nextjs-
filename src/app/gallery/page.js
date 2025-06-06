@@ -43,14 +43,21 @@ const About = () => {
   };
 
   useEffect(() => {
-    const lightbox = GLightbox({
+  let lightbox;
+
+  (async () => {
+    const GLightbox = (await import('glightbox')).default;
+    lightbox = GLightbox({
       selector: '.glightbox-gallery',
     });
+  })();
 
-    return () => {
+  return () => {
+    if (lightbox) {
       lightbox.destroy();
-    };
-  }, []);
+    }
+  };
+}, []);
 
   return (
     <section className="bg-off-white text-gray-900">
