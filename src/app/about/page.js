@@ -96,23 +96,25 @@ const About = () => {
       {/* Introduction */}
       <div className="text-center mb-16 px-6 py-12">
         <p className="text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
-          Welcome to our travel blog! We&apos;re passionate travelers who love to explore the beauty of the world and share our experiences with you. Our journey began with a simple love for adventure and has grown into a mission to inspire others to explore and appreciate the diverse cultures and landscapes around the globe.
+          Welcome to our travel blog! We're passionate travelers who love to explore the beauty of the world and share our experiences with you. Our journey began with a simple love for adventure and has grown into a mission to inspire others to explore and appreciate the diverse cultures and landscapes around the globe.
         </p>
       </div>
 
       {/* Personal Background */}
       <div className="flex flex-col md:flex-row items-center mb-12">
-        <div className="w-full md:w-1/3 mb-6 md:mb-0">
-          <img
+        <div className="w-full md:w-1/3 mb-6 md:mb-0 relative h-64">
+          <Image
             src="/images/Home.jpg"
             alt="Profile"
-            className="w-full h-64 object-cover rounded-full shadow-lg"
+            fill
+            className="object-cover rounded-full shadow-lg"
+            sizes="(max-width: 768px) 100vw, 33vw"
           />
         </div>
         <div className="w-full md:w-2/3 md:pl-6">
           <h2 className="text-3xl font-bold mb-4">Meet the Team</h2>
           <p className="text-lg leading-relaxed mb-6">
-            We are [Your Name] and [Partner&apos;s Name], two avid explorers with a deep love for travel. With backgrounds in [Your Background], we bring a unique perspective to our travel experiences. Our goal is to share our adventures, tips, and recommendations to help you make the most of your travels.
+            We are [Your Name] and [Partner's Name], two avid explorers with a deep love for travel. With backgrounds in [Your Background], we bring a unique perspective to our travel experiences. Our goal is to share our adventures, tips, and recommendations to help you make the most of your travels.
           </p>
         </div>
       </div>
@@ -122,12 +124,14 @@ const About = () => {
         <h2 className="text-3xl font-bold text-center mb-8">Our Travel Moments</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {galleryImages.map((image, index) => (
-            <div key={index} className="relative group">
+            <div key={index} className="relative group h-64">
               <a href={image.src} className="glightbox-gallery" data-glightbox={`title: ${image.title}`}>
-                <img
+                <Image
                   src={image.src}
                   alt={image.title}
-                  className="w-full h-64 object-cover rounded-lg shadow-lg"
+                  fill
+                  className="object-cover rounded-lg shadow-lg"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity rounded-lg"></div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-white text-lg font-bold">
@@ -150,7 +154,7 @@ const About = () => {
       {/* Contact Information */}
       <div className="text-center py-12 px-6 bg-off-white">
         <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
-        <p className="text-lg mb-4">We&apos;d love to hear from you! Whether you have questions, feedback, or just want to say hello, feel free to reach out.</p>
+        <p className="text-lg mb-4">We'd love to hear from you! Whether you have questions, feedback, or just want to say hello, feel free to reach out.</p>
         <a href="/contact" className="bg-green-950 text-white font-semibold py-2 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300">
           Contact Us
         </a>
