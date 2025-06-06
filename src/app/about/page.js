@@ -15,7 +15,7 @@ const About = () => {
   const sliderImages = [
     { src: "/images/Home.jpg", title: 'About Us' },
     { src: "/images/img.jpg", title: 'Image 2' },
-    { src: "/images/IMG1.jpg", title: 'Image 3' },
+    { src: "/images/IMG1.jpg", title: 'Travelers Journey' }, // Hypothetical fix
   ];
 
   const galleryImages = [
@@ -102,11 +102,12 @@ const About = () => {
 
       {/* Personal Background */}
       <div className="flex flex-col md:flex-row items-center mb-12">
-        <div className="w-full md:w-1/3 mb-6 md:mb-0">
-          <img
+        <div className="w-full md:w-1/3 mb-6 md:mb-0 relative h-64">
+          <Image
             src="/images/Home.jpg"
             alt="Profile"
-            className="w-full h-64 object-cover rounded-full shadow-lg"
+            fill
+            className="object-cover rounded-full shadow-lg"
           />
         </div>
         <div className="w-full md:w-2/3 md:pl-6">
@@ -122,12 +123,13 @@ const About = () => {
         <h2 className="text-3xl font-bold text-center mb-8">Our Travel Moments</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {galleryImages.map((image, index) => (
-            <div key={index} className="relative group">
+            <div key={index} className="relative group h-64">
               <a href={image.src} className="glightbox-gallery" data-glightbox={`title: ${image.title}`}>
-                <img
+                <Image
                   src={image.src}
                   alt={image.title}
-                  className="w-full h-64 object-cover rounded-lg shadow-lg"
+                  fill
+                  className="object-cover rounded-lg shadow-lg"
                 />
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity rounded-lg"></div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-white text-lg font-bold">
