@@ -23,11 +23,11 @@ const HomePage = () => {
     },
   ];
   const images = [
-    "/images/Home.jpg",
-    "/images/Home.jpg",
+    "/images/Home.JPG",
+    "/images/Home.JPG",
     "/images/IMG1.jpg",
     "/images/img.jpg",
-    "/images/Home.jpg",
+    "/images/Home.JPG",
   ];
 
   return (
@@ -35,7 +35,7 @@ const HomePage = () => {
       {/* Banner Section */}
       <div
         className="home-banner text-center py-20 bg-cover bg-center mb-20"
-        style={{ backgroundImage: 'url("/images/Home.jpg")' }}
+        style={{ backgroundImage: 'url("/images/Home.JPG")' }}
       >
         <h1 className="text-5xl font-bold text-white">
           JOURNEY, IMAGINE, <span className="text-green-400">DISCOVER</span>
@@ -92,7 +92,7 @@ const HomePage = () => {
           <div className="order-2 lg:order-1">
             <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[600px] xl:h-[700px]">
               <Image
-                src="/images/img.jpg"
+                src="/images/img.JPG"
                 alt="Traveler in front of a Japanese castle"
                 layout="fill"
                 objectFit="cover"
@@ -138,7 +138,7 @@ const HomePage = () => {
           {/* Aside Section */}
           <aside className="bg-white shadow-lg p-6 rounded-lg text-center mb-20">
             <Image
-              src="/images/Home.jpg"
+              src="/images/Home.JPG"
               alt="David and Intan"
               width={150}
               height={150}
@@ -162,7 +162,7 @@ const HomePage = () => {
             </div>
           </aside>
         </div>
-        <div className="relative w-screen h-[400px] bg-cover bg-center" style={{ backgroundImage: "url('/images/Home.jpg')" }}>
+        <div className="relative w-screen h-[400px] bg-cover bg-center" style={{ backgroundImage: "url('/images/Home.JPG')" }}>
         <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center">
           <h1 className="text-white text-4xl font-bold">Get In Touch</h1>
           <h1 className="text-white text-lg mt-4">

@@ -9,7 +9,7 @@ const Destinations = () => {
         {/* Hero Image */}
         <div className="relative mb-12 h-48 sm:h-64 md:h-80 lg:h-96">
           <Image
-            src="/images/IM1.JPG"
+            src="/images/IMG1.JPG"
             alt="Travel Destinations"
             fill
             className="object-cover rounded-lg shadow-lg transition-transform hover:scale-110 duration-500"

@@ -12,17 +12,17 @@ const About = () => {
   const sliderRef = useRef(null);
 
   const sliderImages = [
-    { src: "/images/Home.jpg", title: 'About Us' },
-    { src: "/images/img.jpg", title: 'Image 2' },
-    { src: "/images/IMG1.jpg", title: 'Traveler Journey' },
+    { src: "/images/Home.JPG", title: 'About Us' },
+    { src: "/images/img.JPG", title: 'Image 2' },
+    { src: "/images/IMG1.JPG", title: 'Traveler Journey' },
   ];
 
   const galleryImages = [
-    { src: "/images/Home.jpg", title: 'About Us' },
-    { src: "/images/img.jpg", title: 'Image 2' },
-    { src: "/images/IMG1.jpg", title: 'Image 3' },
-    { src: "/images/IMG2.jpg", title: 'Image 4' },
-    { src: "/images/IMG3.jpg", title: 'Image 5' },
+    { src: "/images/Home.JPG", title: 'About Us' },
+    { src: "/images/img.JPG", title: 'Image 2' },
+    { src: "/images/IMG1.JPG", title: 'Image 3' },
+    { src: "/images/IMG2.JPG", title: 'Image 4' },
+    { src: "/images/IMG3.JPG", title: 'Image 5' },
   ];
 
   const sliderSettings = {
@@ -109,7 +109,7 @@ const About = () => {
       <div className="flex flex-col md:flex-row items-center mb-12">
         <div className="w-full md:w-1/3 mb-6 md:mb-0 relative h-64">
           <Image
-            src="/images/Home.jpg"
+            src="/images/Home.JPG"
             alt="Profile"
             fill
             className="object-cover rounded-full shadow-lg"

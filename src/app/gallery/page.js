@@ -11,17 +11,17 @@ const About = () => {
   const sliderRef = useRef(null);
 
   const sliderImages = [
-    { src: "/images/Home.jpg", title: 'My Gallery' },
-    { src: "/images/img.jpg", title: 'Image 2' },
-    { src: "/images/IMG1.jpg", title: 'Image 3' },
+    { src: "/images/Home.JPG", title: 'My Gallery' },
+    { src: "/images/img.JPG", title: 'Image 2' },
+    { src: "/images/IMG1.JPG", title: 'Image 3' },
   ];
 
   const galleryImages = [
-    { src: "/images/Home.jpg", title: 'About Us' },
-    { src: "/images/img.jpg", title: 'Image 2' },
-    { src: "/images/IMG1.jpg", title: 'Image 3' },
-    { src: "/images/IMG2.jpg", title: 'Image 4' },
-    { src: "/images/IMG3.jpg", title: 'Image 5' },
+    { src: "/images/Home.JPG", title: 'About Us' },
+    { src: "/images/img.JPG", title: 'Image 2' },
+    { src: "/images/IMG1.JPG", title: 'Image 3' },
+    { src: "/images/IMG2.JPG", title: 'Image 4' },
+    { src: "/images/IMG3.JPG", title: 'Image 5' },
   ];
 
   const sliderSettings = {
