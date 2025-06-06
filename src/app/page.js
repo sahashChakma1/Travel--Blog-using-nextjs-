@@ -164,17 +164,23 @@ const HomePage = () => {
         </div>
 
         <div className="relative w-screen h-[400px] bg-cover bg-center" style={{ backgroundImage: "url('/images/Home.jpg')" }}>
-          <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center">
-            <h1 className="text-white text-4xl font-bold">Get In Touch</h1>
-            <h1 className="text-white text-lg mt-4">
-              Feel free to <a href="/contact" className="text-orange-500 underline">contact me</a> if you have travel questions, comments, or suggestions!
-            </h1>
-            <h1 className="text-white text-lg mt-2">I&apos;ll try to get back to you!</h1>
-            <div className="mt-6">
-              <img src="/path-to-paper-plane-icon.svg" alt="Paper Plane" className="w-8 h-8" />
-            </div>
-          </div>
-        </div>
+  <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center">
+    <h1 className="text-white text-4xl font-bold">Get In Touch</h1>
+    <h1 className="text-white text-lg mt-4">
+      Feel free to <a href="/contact" className="text-orange-500 underline">contact me</a> if you have travel questions, comments, or suggestions!
+    </h1>
+    <h1 className="text-white text-lg mt-2">I'll try to get back to you!</h1>
+    <div className="mt-6">
+      <Image
+        src="/path-to-paper-plane-icon.svg"
+        alt="Paper Plane"
+        width={32}
+        height={32}
+        className="w-8 h-8"
+      />
+    </div>
+  </div>
+</div>
 
         <div className="bg-white py-6">
           <h2 className="text-center font-bold text-lg mb-4">Instagram</h2>

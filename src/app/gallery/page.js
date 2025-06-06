@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import Slider from 'react-slick';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import GLightbox from 'glightbox';
+import Image from 'next/image'; // Already imported, now used
 import 'glightbox/dist/css/glightbox.min.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -41,7 +42,6 @@ const About = () => {
     sliderRef.current.slickNext();
   };
 
-  // Initialize GLightbox for the gallery
   useEffect(() => {
     const lightbox = GLightbox({
       selector: '.glightbox-gallery',
@@ -59,10 +59,12 @@ const About = () => {
         <Slider ref={sliderRef} {...sliderSettings}>
           {sliderImages.map((image, index) => (
             <div key={index} className="w-full h-[500px] relative">
-              <img
+              <Image
                 src={image.src}
                 alt={image.title}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                priority={index === 0} // Prioritize first image for LCP
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-center justify-center">
                 <h1 className="text-3xl md:text-5xl font-extrabold text-white drop-shadow-lg">{image.title}</h1>
@@ -85,18 +87,19 @@ const About = () => {
           <ChevronRight size={24} />
         </button>
       </div>
-    
+
       {/* Gallery Section */}
       <div className="py-12 px-6">
         <h2 className="text-3xl font-bold text-center mb-8">My Gallery</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {galleryImages.map((image, index) => (
-            <div key={index} className="relative group">
+            <div key={index} className="relative group h-64">
               <a href={image.src} className="glightbox-gallery" data-glightbox={`title: ${image.title}`}>
-                <img
+                <Image
                   src={image.src}
                   alt={image.title}
-                  className="w-full h-64 object-cover rounded-lg shadow-lg"
+                  fill
+                  className="object-cover rounded-lg shadow-lg"
                 />
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity rounded-lg"></div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-white text-lg font-bold">
@@ -108,12 +111,10 @@ const About = () => {
         </div>
       </div>
 
-     
-
       {/* Contact Information */}
       <div className="text-center py-12 px-6 bg-off-white">
         <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
-        
+        {/* Add contact details here if needed */}
       </div>
     </section>
   );
