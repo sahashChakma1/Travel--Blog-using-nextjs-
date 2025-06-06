@@ -2,7 +2,6 @@
 import React, { useRef, useEffect } from 'react';
 import Slider from 'react-slick';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import GLightbox from 'glightbox';
 import Image from 'next/image'; // Already imported, now used
 import 'glightbox/dist/css/glightbox.min.css';
 import "slick-carousel/slick/slick.css";
