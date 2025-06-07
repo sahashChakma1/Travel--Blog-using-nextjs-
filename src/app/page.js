@@ -25,8 +25,8 @@ const HomePage = () => {
   const images = [
     "/images/Home.JPG",
     "/images/Home.JPG",
-    "/images/IMG1.jpg",
-    "/images/img.jpg",
+    "/images/IMG1.JPG",
+    "/images/img.JPG",
     "/images/Home.JPG",
   ];
 

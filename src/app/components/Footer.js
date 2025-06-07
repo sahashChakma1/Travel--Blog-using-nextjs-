@@ -37,7 +37,7 @@ export default function Footer({ fontClassName }) {
 
       {/* Copyright Text */}
       <p className="text-center text-xs sm:text-sm font-light">
-        © Beyond The Hills, Inc
+        © Surita Chakma , Inc
       </p>
 
       {/* Additional Links */}

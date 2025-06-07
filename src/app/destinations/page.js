@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Destinations = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-off-white text-gray-900">
+    <section className="min-h-screen bg-off-white0 text-gray-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Image */}
         <div className="relative mb-12 h-48 sm:h-64 md:h-80 lg:h-96">

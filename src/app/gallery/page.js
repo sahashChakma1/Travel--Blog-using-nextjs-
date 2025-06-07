@@ -59,7 +59,7 @@ const About = () => {
 }, []);
 
   return (
-    <section className="bg-off-white text-gray-900">
+    <section className="bg-off-white0 text-gray-900">
       {/* Hero Section */}
       <div className="relative w-full h-[500px] overflow-hidden">
         <Slider ref={sliderRef} {...sliderSettings}>
