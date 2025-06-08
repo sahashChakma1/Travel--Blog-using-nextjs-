@@ -3,6 +3,24 @@ import React from 'react';
 export default function Footer({ fontClassName }) {
   return (
     <footer className={`${fontClassName} bg-neutral-900 text-gray-400 w-full flex flex-col items-center p-4 sm:p-6 lg:p-8`}>
+      
+      {/* Navigation Links */}
+      <nav className="mb-6">
+        <ul className="flex space-x-6 text-gray-400 hover:text-gray-300">
+          <li>
+            <a href="/" className="hover:underline">Home</a>
+          </li>
+          <li>
+            <a href="/about" className="hover:underline">About</a>
+          </li>
+          <li>
+            <a href="/gallery" className="hover:underline">Gallery</a>
+          </li>
+          <li>
+            <a href="/destinations" className="hover:underline">Destinations</a>
+          </li>
+        </ul>
+      </nav>
       {/* Social Media Links */}
       <div className="flex space-x-4 mb-4">
         <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-300">
