@@ -66,9 +66,9 @@ export default function Footer({ fontClassName }) {
       </p>
 
       {/* Fun Travel Quote */}
-      <p className="mt-4 text-center text-xs sm:text-sm text-gray-400 max-w-md">
-          'Travel is the only thing you buy that makes you richer. 🌏✨ Keep exploring and collect memories everywhere!'
-        </p>
+     <p className="mt-4 text-center text-xs sm:text-sm text-gray-400 max-w-md">
+    &apos;Travel is the only thing you buy that makes you richer. 🌏✨ Keep exploring and collect memories everywhere!&apos;
+</p>
     </footer>
   );
 }
