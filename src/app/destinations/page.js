@@ -1,7 +1,9 @@
 "use client";
 import React, { useRef } from "react";
 import Image from "next/image";
+import Head from "next/head";
 import Slider from "react-slick";
+import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import "slick-carousel/slick/slick.css";
@@ -11,15 +13,15 @@ const Destinations = () => {
   const sliderRef = useRef(null);
 
   const sliderImages = [
-    { src: "/images/Home.JPG", title: "Explore the World" },
-    { src: "/images/img.JPG", title: "Discover Hidden Gems" },
-    { src: "/images/IMG1.JPG", title: "Your Next Adventure" },
+    { src: "/images/Home.JPG", title: "Journeys Through the Hills", alt: "Misty mountain view in Northeast India" },
+    { src: "/images/img.JPG", title: "Stories Rooted in Culture", alt: "Local crafts and cultural expression" },
+    { src: "/images/IMG1.JPG", title: "Where Travel Meets Connection", alt: "Traveler connecting with locals in the hills" },
   ];
 
   const sliderSettings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
@@ -27,156 +29,213 @@ const Destinations = () => {
     autoplaySpeed: 5000,
   };
 
-  const goToPrevious = () => {
-    sliderRef.current?.slickPrev();
-  };
+  const goToPrevious = () => sliderRef.current?.slickPrev();
+  const goToNext = () => sliderRef.current?.slickNext();
 
-  const goToNext = () => {
-    sliderRef.current?.slickNext();
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
   };
 
   return (
-    <section className="min-h-screen bg-off-white text-gray-900">
+    <>
+      <Head>
+        <title>Destinations | Muromuri</title>
+        <meta
+          name="description"
+          content="Explore immersive journeys through Mizoram, Meghalaya, and Nagaland — curated by Muromuri for mindful travelers."
+        />
+      </Head>
 
-      {/* ✅ Hero Section */}
-      <div className="relative w-full h-[500px] overflow-hidden">
-        <Slider ref={sliderRef} {...sliderSettings}>
-          {sliderImages.map((image, index) => (
-            <div key={index} className="relative w-full h-[500px]">
-              <Image
-                src={image.src}
-                alt={image.title}
-                fill
-                className="object-cover"
-                sizes="100vw"
-                priority={index === 0}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-center justify-center">
-                <h1 className="text-3xl md:text-5xl font-extrabold text-white drop-shadow-lg text-center">
-                  {image.title}
-                </h1>
-              </div>
-            </div>
-          ))}
-        </Slider>
-
-        {/* Navigation Arrows */}
-        <button
-          onClick={goToPrevious}
-          className="absolute top-1/2 left-4 -translate-y-1/2 p-2 bg-black/50 text-white rounded-full hover:bg-black/75 transition-colors z-10"
-          aria-label="Previous image"
-        >
-          <ChevronLeft size={24} />
-        </button>
-        <button
-          onClick={goToNext}
-          className="absolute top-1/2 right-4 -translate-y-1/2 p-2 bg-black/50 text-white rounded-full hover:bg-black/75 transition-colors z-10"
-          aria-label="Next image"
-        >
-          <ChevronRight size={24} />
-        </button>
-      </div>
-
-      {/* ✅ Content Section */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
-        {/* Introduction */}
-        <div className="mb-12 text-center">
-          <p className="text-xl leading-relaxed mb-6 max-w-3xl mx-auto">
-            {`Discover the world's most breathtaking destinations. Whether you're dreaming of tropical beaches, cultural cities, or serene landscapes, our guides are here to inspire and guide your next adventure.`}
-          </p>
-        </div>
-
-        {/* Featured Destinations */}
-        <div className="mb-12">
-          <h2 className="text-4xl font-bold mb-8 text-center">Featured Destinations</h2>
-          <div className="flex flex-wrap gap-8 justify-center">
-            {[
-              {
-                title: "Paris, France",
-                img: "/images/Paris.png",
-                link: "/destinations/paris",
-                description: "Explore the City of Light, famous for its art, architecture, and romance.",
-              },
-              {
-                title: "Kyoto, Japan",
-                img: "/images/Kyoto.png",
-                link: "/destinations/kyoto",
-                description: "Experience the timeless beauty of Kyoto, from its temples to traditional tea houses.",
-              },
-              {
-                title: "Bali, Indonesia",
-                img: "/images/Bali.png",
-                link: "/destinations/bali",
-                description: "A tropical paradise with stunning beaches, vibrant culture, and lush landscapes.",
-              },
-            ].map((destination, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg border border-gray-200 shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl duration-500 w-[300px]"
-              >
-                <div className="relative w-full h-40">
-                  <Image
-                    src={destination.img}
-                    alt={destination.title}
-                    fill
-                    className="object-cover transition-opacity opacity-100 hover:opacity-90 duration-500"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-semibold mb-3">{destination.title}</h3>
-                  <p className="text-gray-600 mb-4">{destination.description}</p>
-                  <a
-                    href={destination.link}
-                    className="text-green-700 font-semibold hover:underline"
+      <section className="min-h-screen bg-[#F9F7F3] text-gray-900">
+        {/* 🏞 Hero Section */}
+        <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+          <Slider ref={sliderRef} {...sliderSettings}>
+            {sliderImages.map((image, index) => (
+              <div key={index} className="relative w-full h-[500px] md:h-[600px]">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                  priority={index === 0}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-center justify-center">
+                  <motion.h1
+                    className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg text-center px-6"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1 }}
                   >
-                    Learn More →
-                  </a>
+                    {image.title}
+                  </motion.h1>
                 </div>
               </div>
             ))}
-          </div>
+          </Slider>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={goToPrevious}
+            aria-label="Previous"
+            className="absolute top-1/2 left-6 -translate-y-1/2 p-3 bg-black/40 text-white rounded-full hover:bg-black/70 transition-all z-10"
+          >
+            <ChevronLeft size={26} />
+          </button>
+          <button
+            onClick={goToNext}
+            aria-label="Next"
+            className="absolute top-1/2 right-6 -translate-y-1/2 p-3 bg-black/40 text-white rounded-full hover:bg-black/70 transition-all z-10"
+          >
+            <ChevronRight size={26} />
+          </button>
         </div>
 
-        {/* ✅ Travel Tips Section */}
-        <div className="mb-12">
-          <h2 className="text-4xl font-bold mb-8 text-center">Travel Tips</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Pack Smart",
-                tip: "Always pack versatile clothing and essentials. Roll clothes to save space and use packing cubes for organization.",
-              },
-              {
-                title: "Stay Connected",
-                tip: "Get a local SIM card or use an eSIM for reliable internet and easier navigation during your trip.",
-              },
-              {
-                title: "Respect Local Culture",
-                tip: "Learn basic greetings, local customs, and dress modestly when required. Respect goes a long way.",
-              },
-              {
-                title: "Stay Safe",
-                tip: "Keep digital copies of important documents and avoid unsafe neighborhoods, especially at night.",
-              },
-              {
-                title: "Budget Wisely",
-                tip: "Use apps to track expenses and plan daily spending. Look for deals on attractions and local transport.",
-              },
-              {
-                title: "Try Local Food",
-                tip: "Step out of your comfort zone and experience authentic flavors. Street food is often delicious and cheap!",
-              },
-            ].map((tip, index) => (
-              <div key={index} className="bg-white rounded-lg shadow p-6 border hover:shadow-md transition">
-                <h3 className="text-xl font-bold mb-2">{tip.title}</h3>
-                <p className="text-gray-600">{tip.tip}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+        {/* 🌾 Main Content */}
+        <main className="container mx-auto px-6 py-16">
+          {/* Intro Text */}
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-green-900">
+              Explore the Stories of the Hills
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+              {`Each Muromuri journey unfolds across the hills, valleys, and villages of Northeast India. 
+              We don’t just take you to places — we invite you into stories, shared over hearths, trails, and timeless songs.`}
+            </p>
+          </motion.div>
+
+          {/* ✨ Featured Destinations */}
+          <motion.div
+            className="mb-20"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <h3 className="text-4xl font-semibold text-center mb-10 text-green-950 tracking-tight">
+              Featured Journeys
+            </h3>
+            <div className="flex flex-wrap gap-10 justify-center">
+              {[
+                {
+                  title: "Aizawl, Mizoram",
+                  img: "/images/Mizoram.png",
+                  alt: "Panoramic view of Aizawl city in Mizoram hills",
+                  link: "/destinations/aizawl",
+                  description:
+                    "Walk through the layered hills of Mizoram — meet artisans, share stories over tea, and feel the rhythm of life in the clouds.",
+                },
+                {
+                  title: "Sohra, Meghalaya",
+                  img: "/images/Meghalaya.png",
+                  alt: "Living root bridge surrounded by lush greenery in Meghalaya",
+                  link: "/destinations/sohra",
+                  description:
+                    "Where mist, waterfalls, and roots intertwine. Discover Meghalaya’s living bridges and its quiet strength of community.",
+                },
+                {
+                  title: "Mon, Nagaland",
+                  img: "/images/Nagaland.png",
+                  alt: "Traditional Naga village and cultural symbols in Mon district",
+                  link: "/destinations/mon",
+                  description:
+                    "In Nagaland’s remote frontiers, tradition lives through tattoos, music, and warmth. Travel where stories are sacred.",
+                },
+              ].map((destination, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:scale-[1.03] transition-all duration-500 w-[320px]"
+                  whileHover={{ y: -6 }}
+                >
+                  <div className="relative w-full h-48">
+                    <Image
+                      src={destination.img}
+                      alt={destination.alt}
+                      fill
+                      className="object-cover transition-transform duration-500 hover:scale-110"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h4 className="text-2xl font-semibold mb-3 text-green-950">
+                      {destination.title}
+                    </h4>
+                    <p className="text-gray-700 mb-4 leading-relaxed">
+                      {destination.description}
+                    </p>
+                    <a
+                      href={destination.link}
+                      className="text-green-800 font-semibold hover:text-green-600 transition-colors"
+                    >
+                      Discover More →
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* 🌿 Travel Philosophy */}
+          <motion.div
+            className="mb-20"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <h3 className="text-4xl font-semibold mb-10 text-center text-green-950">
+              Our Way of Travel
+            </h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                { title: "Travel Slow", tip: "We take time to listen, learn, and immerse — because the best stories can’t be rushed." },
+                { title: "Stay with Locals", tip: "Experience community-run stays where every smile, meal, and story feels like home." },
+                { title: "Respect & Reciprocity", tip: "Travel isn’t about taking — it’s about sharing. We believe in giving back to the people and lands that host us." },
+                { title: "Curated Comfort", tip: "Small groups, seamless journeys, and thoughtful details for travelers who value experience over luxury." },
+                { title: "Cultural Immersion", tip: "From folk songs to handwoven textiles, every experience connects you to the spirit of the Northeast." },
+                { title: "Sustainability First", tip: "We partner with locals, reduce footprints, and ensure tourism uplifts — not disrupts — communities." },
+              ].map((tip, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-gradient-to-br from-white to-[#F5F3EF] border border-gray-100 rounded-2xl shadow-sm hover:shadow-md p-8 transition-all duration-300"
+                  whileHover={{ scale: 1.03 }}
+                >
+                  <h4 className="text-xl font-semibold text-green-900 mb-3">
+                    {tip.title}
+                  </h4>
+                  <p className="text-gray-700 leading-relaxed">{tip.tip}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ✉️ Call to Action */}
+          <motion.div
+            className="text-center mt-20"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <p className="text-lg mb-6 text-gray-700">
+              Ready to begin your story from the hills?
+            </p>
+            <a
+              href="/contact"
+              className="inline-block bg-green-950 text-white font-semibold py-3 px-10 rounded-full shadow-md hover:bg-green-800 hover:shadow-lg transition-all duration-300"
+            >
+              Plan Your Journey
+            </a>
+          </motion.div>
+        </main>
+      </section>
+    </>
   );
 };
 

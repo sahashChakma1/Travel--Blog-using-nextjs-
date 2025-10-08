@@ -3,8 +3,8 @@ import Footer from './components/Footer.js';
 import Header from './components/Header.js';
 
 export const metadata = {
-  title: 'Surita Chakma ',
-  description: 'This is my portfolio description.',
+  title: 'Muro Muri ',
+  description: 'Welcome to my journey',
   icons: '/favicon.ico',
 };
 

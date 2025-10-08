@@ -1,129 +1,75 @@
 "use client";
-import React, { useRef, useEffect } from 'react';
-import Slider from 'react-slick';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import Image from 'next/image'; // Already imported, now used
-import 'glightbox/dist/css/glightbox.min.css';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useEffect } from "react";
+import Image from "next/image";
+import "glightbox/dist/css/glightbox.min.css";
 
-const About = () => {
-  const sliderRef = useRef(null);
-
-  const sliderImages = [
-    { src: "/images/Home.JPG", title: 'My Gallery' },
-    { src: "/images/img.JPG", title: 'Image 2' },
-    { src: "/images/IMG1.JPG", title: 'Image 3' },
-  ];
-
+const Gallery = () => {
   const galleryImages = [
-    { src: "/images/Home.JPG", title: 'About Us' },
-    { src: "/images/img.JPG", title: 'Image 2' },
-    { src: "/images/IMG1.JPG", title: 'Image 3' },
-    { src: "/images/IMG2.JPG", title: 'Image 4' },
-    { src: "/images/IMG3.JPG", title: 'Image 5' },
+    { src: "/images/Home.JPG", title: "Morning Tea in Aizawl" },
+    { src: "/images/img.JPG", title: "The Road to Dampa" },
+    { src: "/images/IMG1.JPG", title: "Evening Fire by the Hills" },
+    { src: "/images/IMG2.JPG", title: "Handwoven Stories" },
+    { src: "/images/IMG3.JPG", title: "Echoes of Bamboo and Song" },
   ];
-
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-  };
-
-  const goToPrevious = () => {
-    sliderRef.current.slickPrev();
-  };
-
-  const goToNext = () => {
-    sliderRef.current.slickNext();
-  };
 
   useEffect(() => {
-  let lightbox;
-
-  (async () => {
-    const GLightbox = (await import('glightbox')).default;
-    lightbox = GLightbox({
-      selector: '.glightbox-gallery',
-    });
-  })();
-
-  return () => {
-    if (lightbox) {
-      lightbox.destroy();
-    }
-  };
-}, []);
+    let lightbox;
+    (async () => {
+      const GLightbox = (await import("glightbox")).default;
+      lightbox = GLightbox({ selector: ".glightbox-gallery" });
+    })();
+    return () => lightbox && lightbox.destroy();
+  }, []);
 
   return (
-    <section className="bg-off-white0 text-gray-900">
-      {/* Hero Section */}
-      <div className="relative w-full h-[500px] overflow-hidden">
-        <Slider ref={sliderRef} {...sliderSettings}>
-          {sliderImages.map((image, index) => (
-            <div key={index} className="w-full h-[500px] relative">
-              <Image
-                src={image.src}
-                alt={image.title}
-                fill
-                className="object-cover"
-                priority={index === 0} // Prioritize first image for LCP
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-center justify-center">
-                <h1 className="text-3xl md:text-5xl font-extrabold text-white drop-shadow-lg">{image.title}</h1>
-              </div>
-            </div>
-          ))}
-        </Slider>
-        <button
-          onClick={goToPrevious}
-          className="absolute top-1/2 left-4 -translate-y-1/2 p-2 bg-black/50 text-white rounded-full hover:bg-black/75 transition-colors z-10"
-          aria-label="Previous image"
+    <section className="bg-[#f9f7f4] text-gray-900">
+      {/* Gallery Grid */}
+<div className="pt-32 px-10 md:px-12 lg:px-24">
+  <h2 className="text-3xl md:text-4xl font-serif text-center text-gray-800 mb-10">
+    A Glimpse into Muromuri Journeys
+  </h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {galleryImages.map((image, index) => (
+      <div key={index} className="relative group h-72">
+        <a
+          href={image.src}
+          className="glightbox-gallery"
+          data-glightbox={`title: ${image.title}`}
         >
-          <ChevronLeft size={24} />
-        </button>
-        <button
-          onClick={goToNext}
-          className="absolute top-1/2 right-4 -translate-y-1/2 p-2 bg-black/50 text-white rounded-full hover:bg-black/75 transition-colors z-10"
-          aria-label="Next image"
+          <Image
+            src={image.src}
+            alt={image.title}
+            fill
+            className="object-cover rounded-2xl shadow-md transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-70 transition-opacity rounded-2xl"></div>
+          <div className="absolute inset-0 flex items-center justify-center text-center opacity-0 group-hover:opacity-100 transition-opacity text-white text-lg font-medium font-serif px-4">
+            {image.title}
+          </div>
+        </a>
+      </div>
+    ))}
+  </div>
+</div>
+
+      {/* Contact Section */}
+      <div className="bg-[#ede9e3] text-center py-16 px-6">
+        <h2 className="text-3xl font-serif mb-6 text-gray-800">
+          Join a Journey
+        </h2>
+        <p className="max-w-2xl mx-auto text-gray-600 mb-8">
+          If these moments speak to you — come travel with us. Experience
+          Northeast India through stories, connection, and community.
+        </p>
+        <a
+          href="/contact"
+          className="inline-block bg-[#2f3e34] text-white px-6 py-3 rounded-full font-medium hover:bg-[#3f4e43] transition"
         >
-          <ChevronRight size={24} />
-        </button>
-      </div>
-
-      {/* Gallery Section */}
-      <div className="py-12 px-6">
-        <h2 className="text-3xl font-bold text-center mb-8">My Gallery</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {galleryImages.map((image, index) => (
-            <div key={index} className="relative group h-64">
-              <a href={image.src} className="glightbox-gallery" data-glightbox={`title: ${image.title}`}>
-                <Image
-                  src={image.src}
-                  alt={image.title}
-                  fill
-                  className="object-cover rounded-lg shadow-lg"
-                />
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity rounded-lg"></div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-white text-lg font-bold">
-                  {image.title}
-                </div>
-              </a>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Contact Information */}
-      <div className="text-center py-12 px-6 bg-off-white">
-        <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
-        {/* Add contact details here if needed */}
+          Get in Touch
+        </a>
       </div>
     </section>
   );
 };
 
-export default About;
+export default Gallery;

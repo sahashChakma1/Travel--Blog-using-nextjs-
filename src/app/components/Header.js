@@ -54,7 +54,7 @@ export default function Header({ fontClassName }) {
       <div className="flex items-center justify-between px-4 md:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/">
-          <h1 className="text-lg md:text-xl font-bold">Surita Chakma</h1>
+          <h1 className="text-lg md:text-xl font-bold">MuroMuri</h1>
         </Link>
 
         {/* Desktop Nav Links */}
@@ -131,7 +131,7 @@ export default function Header({ fontClassName }) {
       >
         {/* Menu Header */}
         <div>
-          <h2 className="text-xl font-semibold mb-6">Surita Chakma</h2>
+          <h2 className="text-xl font-semibold mb-6">MuroMuri</h2>
           <ul>
          {navLinks.map(({ href, label }, index) => (
            <li key={href}>

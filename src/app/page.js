@@ -1,214 +1,256 @@
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
+import Image from "next/image";
+import Link from "next/link";
 
 const HomePage = () => {
   const posts = [
     {
-      image: '/images/post1.jpg',
-      title: 'Post Title 1',
-      category: 'Category 1',
-      link: '/posts/post1',
+      image: "/images/post1.jpg",
+      title: "What a Morning in Aizawl Feels Like",
+      category: "Culture",
+      link: "/posts/aizawl-morning",
     },
     {
-      image: '/images/post2.jpg',
-      title: 'Post Title 2',
-      category: 'Category 2',
-      link: '/posts/post2',
+      image: "/images/post2.jpg",
+      title: "A Day with a Local Artisan",
+      category: "People",
+      link: "/posts/local-artisan",
     },
     {
-      image: '/images/post3.jpg',
-      title: 'Post Title 3',
-      category: 'Category 3',
-      link: '/posts/post3',
+      image: "/images/post3.jpg",
+      title: "The Songs that Keep Mizoram Alive",
+      category: "Tradition",
+      link: "/posts/mizo-songs",
     },
   ];
+
   const images = [
-    "/images/Home.JPG",
     "/images/Home.JPG",
     "/images/IMG1.JPG",
     "/images/img.JPG",
-    "/images/Home.JPG",
+    "/images/IMG2.JPG",
+    "/images/IMG3.JPG",
   ];
 
   return (
-    <div>
+    <div className="bg-[#f9f7f4] text-gray-900 font-sans">
       {/* Banner Section */}
       <div
-        className="home-banner text-center py-20 bg-cover bg-center mb-20"
+        className="relative w-full h-[90vh] bg-cover bg-center flex flex-col justify-center items-center text-center"
         style={{ backgroundImage: 'url("/images/Home.JPG")' }}
       >
-        <h1 className="text-5xl font-bold text-white">
-          JOURNEY, IMAGINE, <span className="text-green-400">DISCOVER</span>
-        </h1>
-        <p className="text-xl text-white mt-6">Wander, Experience, Enjoy</p>
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="relative z-10 px-6">
+          <h1 className="text-5xl md:text-7xl font-serif text-white drop-shadow-lg">
+            Immerse. Connect. <span className="text-[#d2b48c]">Belong.</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-100 mt-6 max-w-2xl mx-auto leading-relaxed">
+            Travel through stories, cultures, and the quiet rhythm of the hills.
+          </p>
         <Link
-          href="/destinations"
-          className="inline-block mt-8 px-8 py-3 border-2 border-white text-white bg-transparent hover:bg-green-800 hover:border-green-800 transition-all duration-300 transform hover:scale-105"
-        >
-          Start Exploring
-        </Link>
+  href="/destinations"
+  className="inline-block mt-10 px-8 py-3 bg-[#ebf8f4] text-black rounded-full hover:bg-[#1f5a27] transition-all duration-300"
+>
+  Explore Journeys
+</Link>
+
+
+        </div>
       </div>
 
-      {/* Content Section Below Banner */}
-      <div className="content-section px-6 md:px-12 py-16 text-center mb-20">
-        <h2 className="text-4xl font-semibold mb-10">Discover Your Next Adventure</h2>
-        <p className="text-lg leading-relaxed mb-12 max-w-3xl mx-auto">
-          Our travel blog is your gateway to discovering the world&apos;s most breathtaking destinations.
-          Whether you&apos;re planning a weekend getaway or a month-long expedition, we&apos;ve got you covered with
-          expert tips, travel guides, and insider advice. Start exploring and let your wanderlust take flight!
+      {/* Core Philosophy */}
+      <section className="px-6 md:px-12 lg:px-24 py-20 text-center">
+        <h2 className="text-4xl md:text-5xl font-serif mb-10 text-gray-800">
+          Find Meaning in Every Journey
+        </h2>
+        <p className="text-lg md:text-xl leading-relaxed text-gray-700 max-w-3xl mx-auto">
+          Muromuri curates small-group journeys across the hills of Northeast India —
+          where you don’t just see a place, you become part of its story. 
+          Wake up in a Mizo home, share tea with your hosts, and listen to
+          stories passed down for generations. These are not trips — they’re
+          connections waiting to happen.
         </p>
+      </section>
 
-        {/* Featured Destinations */}
-        <div className="featured-destinations py-12 mb-20">
-          <h3 className="text-3xl font-semibold mb-8">Featured Destinations</h3>
-          <div className="destination-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Destination Items */}
-            {[
-              { src: '/images/destination1.jpg', title: "Exploring Bali&apos;s Hidden Waterfalls", desc: "Discover the hidden gems of Bali&apos;s waterfalls." },
-              { src: '/images/destination2.jpg', title: "Top 10 Destinations in Japan", desc: "Explore the top destinations in Japan for a cultural experience." },
-              { src: '/images/destination3.jpg', title: "A Guide to the Best Hikes in Nepal", desc: "Find the best hikes in Nepal for your next adventure." },
-              { src: '/images/destination4.jpg', title: "Discover the Beauty of Iceland", desc: "Experience the stunning landscapes and natural wonders of Iceland." },
-            ].map((destination, index) => (
-              <div key={index} className="destination-item text-left transform transition-transform duration-300 hover:scale-105">
-                <div className="relative h-60 mb-4 overflow-hidden rounded-lg">
-                  <Image
-                    src={destination.src}
-                    alt={destination.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="transition-transform duration-300 hover:scale-110"
-                  />
-                </div>
-                <h4 className="text-xl font-bold">{destination.title}</h4>
+      {/* Journeys Section */}
+      <section className="bg-[#ede9e3] py-20 px-6 md:px-12 lg:px-24 text-center">
+        <h3 className="text-3xl md:text-4xl font-serif mb-12 text-gray-800">
+          Journeys Crafted with Intention
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {[
+            {
+              src: "/images/destination1.jpg",
+              title: "Life in Aizawl’s Morning Mist",
+              desc: "Walk through fog-draped streets as the city wakes to the rhythm of song and prayer.",
+            },
+            {
+              src: "/images/destination2.jpg",
+              title: "The Bamboo Trail",
+              desc: "Follow artisans who turn forest and fire into craft and culture.",
+            },
+            {
+              src: "/images/destination3.jpg",
+              title: "Stories of the Hills",
+              desc: "Sit by the hearth, share laughter, and taste the essence of community.",
+            },
+            {
+              src: "/images/destination4.jpg",
+              title: "Beyond the Valleys",
+              desc: "Discover the spirit of Northeast India through people, not checklists.",
+            },
+          ].map((destination, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-transform duration-500 hover:-translate-y-2"
+            >
+              <div className="relative h-64 w-full">
+                <Image
+                  src={destination.src}
+                  alt={destination.title}
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+              <div className="p-6 text-left">
+                <h4 className="text-xl font-semibold font-serif mb-3 text-gray-900">
+                  {destination.title}
+                </h4>
                 <p className="text-gray-700">{destination.desc}</p>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* About Section */}
-        <h2 className="text-4xl font-bold mb-12 text-center lg:text-left">Thanks For Looking!</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 items-start">
-          <div className="order-2 lg:order-1">
-            <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[600px] xl:h-[700px]">
-              <Image
-                src="/images/img.JPG"
-                alt="Traveler in front of a Japanese castle"
-                layout="fill"
-                objectFit="cover"
-                className="rounded-lg shadow-lg"
-              />
             </div>
-          </div>
-          <div className="order-1 lg:order-2">
-            <p className="mb-4">I&apos;m David Leiter, the guy behind this website...</p>
-            <p className="mb-4">I started this travel blog in 2019...</p>
-            <p className="mb-4">Together, we&apos;ve done some <span className="text-orange-500">bucket list hikes</span>...</p>
-            <p className="mb-4">I&apos;ve worked with and been featured by BBC Travel, NBC News, Time...</p>
-            <p className="mb-6">I haven&apos;t been everywhere, but it&apos;s on my list...</p>
-            <Link href="/about">
-              <button className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition duration-300">
-                READ MORE →
-              </button>
-            </Link>
-          </div>
+          ))}
         </div>
+      </section>
 
-        {/* Recent Posts and Aside Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          {/* Recent Posts */}
-          <div className="md:col-span-2">
-            <h2 className="text-3xl font-bold mb-8">Recent Posts</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {posts.map((post, index) => (
-                <div key={index} className="border rounded-lg overflow-hidden shadow-lg mb-6">
-                  <Image src={post.image} alt={post.title} width={500} height={300} />
-                  <div className="p-4">
-                    <p className="text-orange-500 text-sm mb-2">{post.category}</p>
-                    <h3 className="text-xl font-bold mb-4">{post.title}</h3>
-                    <Link href={post.link} className="bg-orange-500 text-white px-4 py-2 rounded-full inline-block">
-                      Read More
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Aside Section */}
-          <aside className="bg-white shadow-lg p-6 rounded-lg text-center mb-20">
-            <Image
-              src="/images/Home.JPG"
-              alt="David and Intan"
-              width={150}
-              height={150}
-              className="rounded-full mx-auto"
-            />
-            <h3 className="text-xl font-bold mt-4">Hey there! I&apos;m David Leiter</h3>
-            <p className="mt-4">An American who&apos;s been traveling the world full-time for 8 years now.</p>
-            <p className="mt-4">My wife Intan and I are based in Bali...</p>
-
-            {/* Social Links */}
-            <div className="flex space-x-4 justify-center mt-6">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                <Image src="/icons/facebook.svg" alt="Facebook" width={24} height={24} />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <Image src="/icons/instagram.svg" alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                <Image src="/icons/youtube.svg" alt="YouTube" width={24} height={24} />
-              </a>
-            </div>
-          </aside>
+      {/* About Section */}
+      <section className="px-6 md:px-12 lg:px-24 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-lg">
+          <Image
+            src="/images/img.JPG"
+            alt="Muromuri Founder Surita"
+            fill
+            className="object-cover"
+          />
         </div>
-        <div className="relative w-screen h-[400px] bg-cover bg-center" style={{ backgroundImage: "url('/images/Home.JPG')" }}>
-        <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center">
-          <h1 className="text-white text-4xl font-bold">Get In Touch</h1>
-          <h1 className="text-white text-lg mt-4">
-            Feel free to <a href="/contact" className="text-orange-500 underline">contact me</a> if you have travel questions, comments, or suggestions!
-          </h1>
-          <h1 className="text-white text-lg mt-2">I&apos;ll try to get back to you!</h1>
-          <div className="mt-6">
-            <Image
-              src="/path-to-paper-plane-icon.svg"
-              alt="Paper Plane"
-              width={32}
-              height={32}
-              className="w-8 h-8"
-            />
-          </div>
+        <div>
+          <h2 className="text-3xl font-serif mb-6 text-gray-800">
+            The Heart Behind Muromuri
+          </h2>
+          <p className="mb-4 text-gray-700">
+            I’m <span className="font-semibold">Surita</span>, the storyteller behind Muromuri — born in the hills and shaped by their stories.
+          </p>
+          <p className="mb-4 text-gray-700">
+            Muromuri began with a simple idea: to create journeys that connect people, not just places.
+          </p>
+          <p className="mb-4 text-gray-700">
+            Every trip we design brings travelers closer to local lives, cultures, and crafts — through warmth, respect, and shared moments.
+          </p>
+          <p className="mb-8 text-gray-700">
+            We believe slow travel isn’t about doing less — it’s about feeling more.
+          </p>
+          <Link href="/about">
+            <button className="bg-[#2f3e34] text-white px-8 py-3 rounded-full hover:bg-[#3f4e43] transition duration-300">
+              Our Story →
+            </button>
+          </Link>
         </div>
-      </div>
+      </section>
 
-        <div className="bg-white py-6">
-          <h2 className="text-center font-bold text-lg mb-4">Instagram</h2>
-          <div className="flex flex-wrap gap-4 justify-center px-4">
-            {images.map((img, idx) => (
-              <div key={idx} className="relative w-72 h-72 flex-shrink-0 overflow-hidden">
-                <div className="relative w-full h-full group">
-                  {/* Image with hover effect */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-300 ease-in-out group-hover:scale-110"
-                    style={{ backgroundImage: `url(${img})` }}
-                  />
-                  {/* Hover effect with opacity and border */}
-                  <div className="absolute inset-0 border-2 border-black opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
+      {/* Blog Section */}
+      <section className="px-6 md:px-12 lg:px-24 py-20 bg-[#f4f2ee]">
+        <h2 className="text-3xl md:text-4xl font-serif mb-12 text-center text-gray-800">
+          Stories from the Hills
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {posts.map((post, index) => (
+            <div
+              key={index}
+              className="rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-transform duration-500 hover:-translate-y-2"
+            >
+              <div className="relative h-64 w-full">
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                />
               </div>
-            ))}
-          </div>
+              <div className="p-6 text-left">
+                <p className="text-sm text-[#3f4e43] uppercase tracking-wide mb-2">
+                  {post.category}
+                </p>
+                <h3 className="text-xl font-serif mb-4 text-gray-900">
+                  {post.title}
+                </h3>
+                <Link
+                  href={post.link}
+                  className="text-[#2f3e34] font-semibold hover:underline"
+                >
+                  Read Story →
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
+      </section>
 
-        {/* Call-to-Action */}
-        <div className="call-to-action mt-20 text-center bg-green-100 p-12 rounded-lg">
-          <h3 className="text-3xl font-semibold mb-4">Ready to Start Your Adventure?</h3>
-          <p className="text-xl mb-8">Sign up for our newsletter to receive the latest updates, travel tips, and exclusive offers!</p>
-          <button className="cta-button bg-green-600 text-white py-3 px-8 rounded-lg text-lg hover:bg-green-700 transition duration-300">
-            Subscribe Now
-          </button>
+      {/* CTA Section */}
+      <section
+        className="relative h-[400px] flex items-center justify-center text-center bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/Home.JPG')" }}
+      >
+        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="relative z-10 text-white px-6">
+          <h2 className="text-4xl font-serif mb-4">
+            Let’s Begin Your Story
+          </h2>
+          <p className="text-lg max-w-2xl mx-auto mb-6 text-gray-200">
+            Have questions or want to join our next journey?{" "}
+            <a href="/contact" className="text-[#d2b48c] underline">
+              Contact us
+            </a>{" "}
+            — we’d love to hear from you.
+          </p>
         </div>
-      </div>
+      </section>
+
+      {/* Instagram Feed */}
+      <section className="bg-[#faf9f7] py-20 text-center">
+        <h3 className="text-2xl font-serif mb-8 text-gray-800">
+          From the Hills to Your Feed
+        </h3>
+        <div className="flex flex-wrap justify-center gap-4 px-4">
+          {images.map((img, idx) => (
+            <div
+              key={idx}
+              className="relative w-64 h-64 rounded-2xl overflow-hidden shadow-md group"
+            >
+              <Image
+                src={img}
+                alt={`Instagram ${idx + 1}`}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-50 transition-opacity"></div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Subscribe Section */}
+      <section className="bg-[#ede9e3] text-center py-20 px-6">
+        <h3 className="text-3xl font-serif mb-4 text-gray-800">
+          Join the Muromuri Circle
+        </h3>
+        <p className="text-lg mb-8 max-w-xl mx-auto text-gray-700">
+          Be the first to hear about upcoming journeys, behind-the-scenes stories,
+          and the people who make Muromuri what it is.
+        </p>
+        <button className="bg-[#2f3e34] text-white py-3 px-8 rounded-full text-lg hover:bg-[#3f4e43] transition">
+          Subscribe
+        </button>
+      </section>
     </div>
   );
 };
