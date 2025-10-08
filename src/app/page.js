@@ -53,8 +53,6 @@ const HomePage = () => {
 >
   Explore Journeys
 </Link>
-
-
         </div>
       </div>
 
@@ -254,5 +252,4 @@ const HomePage = () => {
     </div>
   );
 };
-
 export default HomePage;

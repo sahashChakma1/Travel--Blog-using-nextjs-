@@ -120,7 +120,7 @@ const About = () => {
           that breathe life into the hills of Northeast India.
         </p>
         <p className="text-lg md:text-xl leading-relaxed text-gray-700">
-          Every journey we curate is a bridge between people — woven with warmth, curiosity, and respect for the culture that holds us.
+          Every journey we curate is a bridge between people woven with warmth, curiosity, and respect for the culture that holds us.
         </p>
       </motion.div>
 

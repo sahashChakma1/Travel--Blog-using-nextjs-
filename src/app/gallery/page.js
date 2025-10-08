@@ -51,7 +51,6 @@ const Gallery = () => {
     ))}
   </div>
 </div>
-
       {/* Contact Section */}
       <div className="bg-[#ede9e3] text-center py-16 px-6">
         <h2 className="text-3xl font-serif mb-6 text-gray-800">
